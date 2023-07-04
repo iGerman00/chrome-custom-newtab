@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- background is #242424 -->
+    <title>New tab</title>
+    <style>
+      body {
+        background-color: #242424;
+        overflow: hidden;
+      }
+      #typewriter-container {
+        font-family: "Consolas", "Lucida Console", "Courier New", Courier,
+          monospace;
+        font-size: 100px;
+        color: #ffffff;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 100vh;
+        z-index: 1;
+        /* glow */
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* add a blur effect to the text */
+        position: relative; /* needed for pseudo-elements */
+      }
+      .blurred-text {
+        position: relative;
+      }
+
+      .blurred-text::before {
+        content: attr(data-content);
+        position: absolute;
+        filter: blur(20px) saturate(300%) opacity(0.5);
+        color: inherit;
+        z-index: -1;
+      }
+
+      .cursor {
+        animation: blink 1s ease 0s infinite normal none;
+      }
+
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        80% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+    <!-- favicon is favicon_newtabpage.png -->
+    <link rel="shortcut icon" href="favicon_newtabpage.png" type="image/png" />
+  </head>
+  <body>
+    <div id="typewriter-container" class="blurred-text"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
